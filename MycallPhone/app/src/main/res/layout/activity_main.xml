@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--可扩展标记语言，标准通用标记语言的子集，是一种用于标记电子文件使其具有结构性的标记语言-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--Android的布局方式共有6种，分别是
+    1、LinearLayout（线性布局）
+    2、TableLayout（表格布局）
+    3、FrameLayout（帧布局）
+    4、RelativeLayout（相对布局）
+    5、GridLayout（网格布局）
+    6、AbsoluteLayout（绝对布局）
+    一、相关属性介绍：
+    android：orientation
+　　　　设置布局管理器内组件的排列方式，可设置为 horizon （水平排列）、vertical （垂直排列）。
+        注意： Android 的线性布局不会换行，当组件一个挨着一个的排列到头之后，剩下的组件将不会被显示出来。
+    二、android：gravity
+        设置布局管理器内组件的对齐方式，该属性值可设为
+        top（顶部对齐）
+        bottom（底部对齐）
+        left（左对齐）
+        right（右对齐）
+        center_vertical（垂直方向居中）
+        fill_vertical（垂直方向填充）
+        center_horizontal（水平方向居中）
+        fill_horizontal（水平方向填充）
+        center（垂直与水平方向都居中）
+        fill （填充）
+        clip_vertical（垂直方向裁剪）
+        clip_horizontal（水平方向裁剪）
+        注：可同时指定多种对其方式的组合，中间用“|”连接，
+        如下方代码设置对齐方式为 left|center_vertical 表示出现在屏幕左边且垂直居中。
+    三、其他补充
+        除以上两个常用属性外，LinearLayout 的属性还有以下几个：
+　　    android：baselineAligned　　　该属性设为 false ，将会阻止该布局管理器与它的子元素的基线对齐方式。
+　　    android：divider　　　　　　　设置垂直布局时两个按钮之间的分隔条。
+　　    android：measureWithLargestChild　　　　该属性设为 true 时，所有带权重的子元素都会具有最大子元素的最小尺寸。
+        最后介绍一下 LinearLayout 子元素支持的常用属性：
+　　    android：layout_gravity　　　指定该子元素在 LinearLayout 中的对其方式
+　　    android：layout_weight　　　指定该子元素在 LinearLayout 中所占的权重
+        注：1、Layout，翻译为中文的意思是 布局，安排，版面设计。对于许多的组件的命令，都有Layout_x和x 的区别，
+               而许多的区别很明显，直接是Layout是相对于父容器（一般就是整个xml的布局）的改变，一个是相对于组件本身的改变。
+            2、wrap_content:是layout_width和layout_height的属性值之一，表示和自身内容一样的长度。
+            3、match_parent:是layout_width和layout_height的属性值之一，表示和父组件一样的长度。
+            4.layout_weight:是布局文件的一个属性，它的值表示线性分割原本应有长度的权重，要和wrap_content和match_parent配合使用，不同情况列举如下：
+                 和wrap_content配合：先按照内容的多少去设定空间大小，然后按照权重的比例分配剩余控件。即当控件没有内容或内容未超出按照权重比例分配的空间时，
+                                     就按照layout_weight设定的权重比例分配空间，
+                                     当内容大小超过这样分配的空间时，控件就会扩张，其实就是按照wrap_content来占用空间了，剩下的空间仍然按照本段定理来分配。
+                 和match_parent配合：空间计算公式：空间大小=父容器大小+权重比例*剩余空间大小，比如两个同级控件A，B都是match_parent，
+                                     A的layout_weight为1，B的layout_weight为2（总空间为1match_parent，所需空间为2match_parent，剩余空间为两者之差），
+                                     空间A=1match_parent+1/（1+2）*（1match_parent-2match_parent）=2/3match_parent，
+                                     同理，空间B=1/3match_parent。这个现象和正常情况有些相反，但是可以有效保证空间分配到的比例固定，不会被内容撑大。
+                 和0dp配合：将layout_weight或者layout_height设为0dp，将直接按照layout_weight权重的比例分配空间，且不会被内容撑大。
+    -->
+    <EditText
+        android:id="@+id/et_phone_num"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="请输入手机号码" />
+    <!--
+    android:text		        设置文本内容
+    android:textColor		    字体颜色
+    android:hint		        内容为空时候显示的文本
+    android:textColorHint		为空时显示的文本的颜色
+    android:inputType		    限制输入类型
+        1、number:整数类型
+        2、numberDecimal:小数点类型
+        3、date:日期类型
+        4、text:文本类型(默认值)
+        5、phone:拨号键盘
+        6、textPassword:密码
+        7、textVisiblePassword:可见密码
+        8、textUri:网址
+    android:maxLength		    限制显示的文本长度，超出部分不显示
+    android:minLines		    设置文本的最小行数
+    android:gravity		        设置文本位置，如设置成“center”，文本将居中显示。
+    android:drawableLeft		在text的左边输出一个drawable，如图片
+    android:drawablePadding		设置text与drawable(图片)的间隔，与drawableLeft、drawableRight、drawableTop、drawableBottom一起使用，可设置为负数，单独使用没有效果。
+    android:digits		        设置允许输入哪些字符。如“1234567890”
+    android:ellipsize		    设置当文字过长时,该控件该如何显示。
+        1、start:省略号显示在开头
+        2、end:省略号显示在结尾
+        3、middle:省略号显示在中间
+        4、marquee:以跑马灯的方式显示(动画横向移动)
+    android:lines	        	设置文本的行数，设置两行就显示两行，即使第二行没有数据。
+    android:lineSpacingExtra	设置行间距
+    android:singleLine		    true:单行显示 false:可以多行
+    android:textStyle		    设置字形,可以设置一个或多个，用"|"隔开
+        1、bold:粗体
+        2、italic:斜体
+        3、bolditalic:又粗又斜
+        注：使用方法均为英文代码=“对应数据”
+        例如：android:inputType="textPassword"意为该文本编辑行要求输入的内容为密码。
+    -->
+    <Button
+        android:id="@+id/btn_call_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="点击拨打电话"/>
+    <!--
+    android:id="@+id/btn"                   设置此按钮的一个ID
+    android:gravity="bottom"                让按钮中的文字居于下方
+    android:paddingLeft="20dp"              这只字体的离按钮左边的距离
+    android:text="你好"                     设置文本信息
+    android:textSize="10sp"                 设置文本字体的大小
+    android:background="@color/pink"        设置按钮的颜色 ( 可以是背景图片 )
+    android:drawable                        放一个drawable资源
+    android:drawableTop                     可拉伸要绘制的文本的上面
+    android:drawableBottom                  可拉伸要绘制的文本的下面
+    android:drawableLeft                    可拉伸要绘制的文本的左侧
+    android:drawableRight                   可拉伸要绘制的文本的右侧
+    android:textColor                       设置显示文本的颜色
+    android:onClick                         设置点击事件
+    -->
+</LinearLayout>
